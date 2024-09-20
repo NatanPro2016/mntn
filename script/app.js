@@ -10,13 +10,13 @@ const paralax = (e) => {
   let value2 = window.scrollY - 210;
   console.log(value);
   if (value >= 442) {
-    img_3.style.marginBottom = 212 * 0.1 + "vw";
+    img_3.style.marginBottom = 215 * 0.1 + "vw";
   } else {
     img_3.style.marginBottom = value2 * 0.1 + "vw";
   }
   content.marginTop = value2 * 1 + "vw";
 
-  img_2.style.marginBottom = value2 * 0.02 + "vw";
+  img_2.style.marginBottom = (value2 + 220) * 0.03 + "vw";
 
   if (value <= 196) {
     img_1.style.marginBottom = 33 + value * 0.1 + "vw";

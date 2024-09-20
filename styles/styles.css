@@ -109,6 +109,7 @@ nav .account {
   align-items: start;
   position: relative;
   min-height: 90vw;
+  overflow: hidden;
   .bg {
     position: absolute;
     top: 0;
@@ -370,7 +371,7 @@ footer ul {
     font-size: 12px;
   }
   .hero {
-    height: 90vh;
+    height: 70vh;
 
     .wrapper {
       padding-top: 20rem;
@@ -383,7 +384,7 @@ footer ul {
     .contaner {
       max-width: 100svw;
       overflow: hidden;
-      height: 90vh;
+      height: 70vh;
       display: flex;
       flex-direction: column;
       align-items: center;
