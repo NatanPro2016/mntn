@@ -44,3 +44,23 @@ const observer = new IntersectionObserver(
 cards.forEach((card) => {
   observer.observe(card);
 });
+// Initialize Lenis
+const lenis = new Lenis({
+  duration: 1.2, // Controls the speed of the scroll animation
+  easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Easing function
+  smooth: true, // Enables smooth scrolling
+});
+
+// Scroll update loop
+function raf(time) {
+  lenis.raf(time);
+  requestAnimationFrame(raf);
+}
+
+requestAnimationFrame(raf);
+
+const loading = document.querySelector(".loading");
+
+window.addEventListener("load", () => {
+  loading.classList.add("hidden");
+});

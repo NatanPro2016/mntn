@@ -20,15 +20,14 @@
   padding: 0;
   box-sizing: border-box;
 }
-html {
-  scroll-behavior: smooth;
-}
+
 body {
   max-width: 100svw;
   min-height: 100svh;
   background: #0b1d26;
   color: #fff;
   overflow-x: hidden;
+  position: relative;
 }
 /* common styles */
 
@@ -74,6 +73,85 @@ p {
   font-family: gilory;
   font-size: 18px;
 }
+
+/* loading */
+.loading {
+  height: 100svh;
+  width: 100svw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  background: #0b1d26;
+  z-index: 99;
+}
+.loading.hidden {
+  display: none;
+}
+.loader {
+  --uib-size: 35px;
+  --uib-color: #fbd784;
+  --uib-speed: 0.9s;
+  --uib-stroke: 3.5px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--uib-size);
+  width: var(--uib-size);
+}
+
+.loading-line {
+  position: absolute;
+  top: calc(50% - var(--uib-stroke) / 2);
+  left: 0;
+  height: var(--uib-stroke);
+  width: 100%;
+  border-radius: calc(var(--uib-stroke) / 2);
+  background-color: var(--uib-color);
+  animation: rotate var(--uib-speed) ease-in-out infinite alternate;
+  transition: background-color 0.3s ease;
+}
+
+.loading-line:nth-child(1) {
+  animation-delay: calc(var(--uib-speed) * -0.375);
+}
+
+.loading-line:nth-child(2) {
+  animation-delay: calc(var(--uib-speed) * -0.375);
+  opacity: 0.8;
+}
+
+.loading-line:nth-child(3) {
+  animation-delay: calc(var(--uib-speed) * -0.3);
+  opacity: 0.6;
+}
+
+.loading-line:nth-child(4) {
+  animation-delay: calc(var(--uib-speed) * -0.225);
+  opacity: 0.4;
+}
+
+.loading-line:nth-child(5) {
+  animation-delay: calc(var(--uib-speed) * -0.15);
+  opacity: 0.2;
+}
+
+.loading-line:nth-child(6) {
+  animation-delay: calc(var(--uib-speed) * -0.075);
+  opacity: 0.1;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(180deg);
+  }
+}
+/* navgation  */
 
 nav {
   width: 100%;
@@ -201,6 +279,7 @@ nav .account {
     }
   }
   .slider {
+    position: fixed;
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -314,7 +393,7 @@ footer {
   }
 }
 .info {
-  width: 303px;
+  max-width: 303px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
