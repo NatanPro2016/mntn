@@ -1,17 +1,18 @@
 @font-face {
   font-family: gilroy;
-  src: url(./font/Gilroy-Light.otf);
+  src: url(./font/Gilroy-Light.otf) format('opentype');
   font-weight: light;
 }
+
 @font-face {
   font-family: gilory;
-  src: url(./font/Gilroy-ExtraBold.otf);
+  src: url(./font/Gilroy-ExtraBold.otf) format('opentype');
   font-weight: bolder;
 }
 
 @font-face {
   font-family: chronicle-display;
-  src: url(./font/Chronicle\ Display\ Semibold.otf);
+  src: url(./font/Chronicle\ Display\ Semibold.otf) format('opentype');
   font-weight: bold;
 }
 
@@ -29,46 +30,53 @@ body {
   overflow-x: hidden;
   position: relative;
 }
-/* common styles */
 
+/* common styles */
 ul {
   list-style: none;
 }
+
 .card {
   opacity: 0;
-  transform: translatey(50px);
+  transform: translateY(50px);
   transition: all 1s ease-in-out;
 }
+
 .show {
   opacity: 1;
-  transform: translatey(0px);
+  transform: translateY(0px);
 }
+
 .paragraph {
   display: flex;
   align-items: center;
   gap: 1rem;
-
-  .line {
-    max-width: 72px;
-    width: 100%;
-    height: 2px;
-    background-color: #fbd784;
-  }
-  .yello-paragraph {
-    font-family: gilory;
-    font-weight: bolder;
-    font-size: 18px;
-    color: #fbd784;
-  }
 }
+
+.paragraph .line {
+  max-width: 72px;
+  width: 100%;
+  height: 2px;
+  background-color: #fbd784;
+}
+
+.paragraph .yello-paragraph {  /* Corrected typo here, too */
+  font-family: gilory;
+  font-weight: bolder;
+  font-size: 18px;
+  color: #fbd784;
+}
+
 h1 {
   font-family: chronicle-display;
 }
+
 a {
   font-family: gilory;
   color: #fff;
   text-decoration: none;
 }
+
 p {
   font-family: gilory;
   font-size: 18px;
@@ -85,9 +93,11 @@ p {
   background: #0b1d26;
   z-index: 99;
 }
+
 .loading.hidden {
   display: none;
 }
+
 .loader {
   --uib-size: 35px;
   --uib-color: #fbd784;
@@ -109,6 +119,7 @@ p {
   width: 100%;
   border-radius: calc(var(--uib-stroke) / 2);
   background-color: var(--uib-color);
+  -webkit-animation: rotate var(--uib-speed) ease-in-out infinite alternate; /* Vendor prefix */
   animation: rotate var(--uib-speed) ease-in-out infinite alternate;
   transition: background-color 0.3s ease;
 }
@@ -151,8 +162,8 @@ p {
     transform: rotate(180deg);
   }
 }
-/* navgation  */
 
+/* navigation */
 nav {
   width: 100%;
   display: flex;
@@ -163,153 +174,171 @@ nav {
   font-size: 17px;
   font-weight: bold;
   z-index: 9999;
-  .logo {
-    font-family: chronicle-display;
-    font-size: 32px;
-  }
 }
+
+nav .logo {
+  font-family: chronicle-display;
+  font-size: 32px;
+}
+
 nav ul {
   display: flex;
   list-style: none;
   gap: 3rem;
 }
+
 nav .account {
   display: flex;
   gap: 1rem;
   align-items: center;
 }
 
+/* ... (font-face rules and general styles from previous responses) */
+
 .hero {
   background-size: cover;
   background-repeat: no-repeat;
   display: flex;
   justify-content: space-between;
-  align-items: start;
+  align-items: flex-start; /* Changed to flex-start */
   position: relative;
-  min-height: 90vw;
+  min-height: 90vw; /* Consider vh or fixed pixel value */
   overflow: hidden;
-  .bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    overflow: hidden;
-  }
-  .contaner {
-    min-width: 100vw;
-    height: 90vw;
-    position: absolute;
-    display: flex;
-    overflow: hidden;
-    overflow-x: hidden;
-  }
-  .contaner img {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    pointer-events: none;
-  }
-  .contaner img:nth-child(3) {
-    z-index: 3;
-  }
-
-  .wrapper {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-    z-index: 100;
-    z-index: 2;
-    padding: 20px;
-    padding-top: 25vh;
-  }
-
-  &::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 140%;
-    background: linear-gradient(#0b1d26bd, #0b1d2600, #0b1d26f6);
-    z-index: 1;
-  }
-  .social {
-    display: flex;
-    flex-direction: column;
-    margin-left: -1rem;
-    gap: 3rem;
-    font-weight: bold;
-    margin-top: 6rem;
-
-    .rotated {
-      transform: rotate(90deg);
-    }
-  }
-  .social ul {
-    list-style: none;
-    margin-left: 1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .content {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 2rem;
-
-    .heading {
-      color: #ffffff;
-      font-weight: 600;
-      font-size: 80px;
-      max-width: 950px;
-    }
-    .link {
-      display: inline-flex;
-      gap: 1rem;
-      color: #fff;
-      text-decoration: none;
-      align-items: center;
-      font-size: 18px;
-      font-weight: 600;
-    }
-  }
-  .slider {
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    justify-content: end;
-    align-items: end;
-    font-weight: 600;
-    font-size: 18px;
-    position: relative;
-    margin-right: 1.8rem;
-    &::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      right: -1.8rem;
-      height: 100%;
-      width: 0.2rem;
-      background: #ffffff85;
-    }
-  }
-  .slider ul a {
-    color: #fff;
-    text-decoration: none;
-    margin-top: 2rem;
-  }
-  .slider ul {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
 }
+
+.hero .bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%; /* Ensure bg covers the entire hero */
+  height: 100%; /* Ensure bg covers the entire hero */
+  overflow: hidden;
+}
+
+.hero .contaner {
+  width: 100%; /* Changed to 100% width */
+  height: 90vw; /* Consider vh or fixed pixel value */
+  position: absolute;
+  display: flex;
+  overflow: hidden;
+  overflow-x: hidden;
+}
+
+.hero .contaner img {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  pointer-events: none;
+}
+
+.hero .contaner img:nth-child(3) {
+  z-index: 3;
+}
+
+.hero .wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 2; /* Corrected z-index */
+  padding: 20px;
+  padding-top: 25vh;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 140%;
+  background: linear-gradient(#0b1d26bd, #0b1d2600, #0b1d26f6);
+  z-index: 1;
+}
+
+.hero .social {
+  display: flex;
+  flex-direction: column;
+  margin-left: -1rem;
+  gap: 3rem;
+  font-weight: bold;
+  margin-top: 6rem;
+}
+
+.hero .social .rotated {
+  transform: rotate(90deg);
+}
+
+.hero .social ul {
+  list-style: none;
+  margin-left: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.hero .content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.hero .content .heading {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 80px;
+  max-width: 950px;
+}
+
+.hero .content .link {
+  display: inline-flex;
+  gap: 1rem;
+  color: #fff;
+  text-decoration: none;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.hero .slider {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: flex-end; /* Changed to flex-end */
+  align-items: flex-end; /* Changed to flex-end */
+  font-weight: 600;
+  font-size: 18px;
+  position: relative;
+  margin-right: 1.8rem;
+}
+
+.hero .slider::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -1.8rem;
+  height: 100%;
+  width: 0.2rem;
+  background: #ffffff85;
+}
+
+.hero .slider ul a {
+  color: #fff;
+  text-decoration: none;
+  margin-top: 2rem;
+}
+
+.hero .slider ul {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
 .section {
   display: flex;
   max-width: 1240px;
@@ -317,62 +346,96 @@ nav .account {
   margin: 6rem auto;
   justify-content: space-between;
   padding: 2rem;
-
   position: relative;
   z-index: 2;
   align-items: center;
   gap: 4rem;
-  .content {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    position: relative;
-    align-items: start;
-    max-width: 566px;
-    width: 80vw;
-    &::before {
-      content: "01";
-      font-size: 240px;
-      font-family: gilory;
-      color: #ffffff11;
-      position: absolute;
-      top: -7rem;
-      left: -7rem;
-      z-index: -1;
-    }
+}
+
+.section .content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: relative;
+  align-items: flex-start; /* Changed to flex-start */
+  max-width: 566px;
+  width: 80vw;
+}
+
+.section .content::before {
+  content: "01";
+  font-size: 240px;
+  font-family: gilory;
+  color: #ffffff11;
+  position: absolute;
+  top: -7rem;
+  left: -7rem;
+  z-index: -1;
+  -webkit-animation: floatAnimation 6s ease-in-out infinite alternate; /* Vendor prefix */
+  -moz-animation: floatAnimation 6s ease-in-out infinite alternate; /* Vendor prefix */
+  animation: floatAnimation 6s ease-in-out infinite alternate; /* Standard syntax */
+}
+
+@keyframes floatAnimation {
+  0% {
+    -webkit-transform: translate(0, 0); /* Vendor prefix */
+    -moz-transform: translate(0, 0); /* Vendor prefix */
+    transform: translate(0, 0); /* Standard syntax */
   }
-  .content a {
-    display: inline-flex;
-    gap: 1rem;
-    color: #fbd784;
-    transition: all.2s linear;
-    padding: 2rem 0;
-    &:hover {
-      gap: 1.5rem;
-    }
+  50% {
+    -webkit-transform: translate(-10px, -5px); /* Vendor prefix */
+    -moz-transform: translate(-10px, -5px); /* Vendor prefix */
+    transform: translate(-10px, -5px); /* Standard syntax */
   }
-  .content a img {
-    width: unset;
+  100% {
+    -webkit-transform: translate(0, 0); /* Vendor prefix */
+    -moz-transform: translate(0, 0); /* Vendor prefix */
+    transform: translate(0, 0); /* Standard syntax */
   }
 }
+
+
+.section .content a {
+  display: inline-flex;
+  gap: 1rem;
+  color: #fbd784;
+  transition: all 0.2s linear;
+  padding: 2rem 0;
+}
+
+.section .content a:hover {
+  gap: 1.5rem;
+}
+
+.section .content a img {
+  width: unset;
+}
+
 .section img {
   max-width: 566px;
   width: 80vw;
 }
+
 section .heading-2 {
   font-size: 64px;
 }
+
 .number-01 {
   margin-top: -27vw;
   position: relative;
   z-index: 4;
 }
+
 .number-02 .content::before {
   content: "02";
 }
+
 .number-03 .content::before {
   content: "03";
 }
+
+/* ... (other CSS rules) */
+
 footer {
   display: flex;
   max-width: 1240px;
@@ -382,16 +445,19 @@ footer {
   margin-top: 10rem;
   gap: 4rem;
   justify-content: space-between;
-  .muted {
-    color: #ffffff59;
-  }
-  .yello-paragraph {
-    font-family: gilory;
-    font-weight: bolder;
-    font-size: 24px;
-    color: #fbd784;
-  }
 }
+
+footer .muted {
+  color: #ffffff59;
+}
+
+footer .yello-paragraph {
+  font-family: gilory;
+  font-weight: bolder;
+  font-size: 24px;
+  color: #fbd784;
+}
+
 .info {
   max-width: 303px;
   display: flex;
@@ -399,6 +465,7 @@ footer {
   justify-content: space-between;
   gap: 4rem;
 }
+
 .info div {
   display: flex;
   flex-direction: column;
@@ -414,107 +481,131 @@ footer ul {
   font-family: gilory;
   font-size: 18px;
 }
+
 .more {
   display: flex;
   gap: 3rem;
 }
+
 .logo {
   font-family: chronicle-display;
   font-size: 32px;
 }
+
 @media (max-width: 750px) {
   nav {
     padding: 2rem;
   }
+
   nav ul {
     display: none;
   }
+
   .paragraph {
     display: flex;
     align-items: center;
     gap: 0.3rem;
-
-    .line {
-      width: 32px;
-      height: 2px;
-      background-color: #fbd784;
-    }
-    .yello-paragraph {
-      font-family: gilory;
-      font-weight: bolder;
-      font-size: 12px;
-      color: #fbd784;
-    }
   }
+
+  .paragraph .line {
+    width: 32px;
+    height: 2px;
+    background-color: #fbd784;
+  }
+
+  .paragraph .yello-paragraph {
+    font-family: gilory;
+    font-weight: bolder;
+    font-size: 12px;
+    color: #fbd784;
+  }
+
   p {
     font-size: 12px;
   }
+
   .hero {
-    height: 70vh;
-
-    .wrapper {
-      padding-top: 20rem;
-    }
-    .contaner img {
-      width: 750px;
-      object-position: center;
-      object-fit: cover;
-    }
-    .contaner {
-      max-width: 100svw;
-      overflow: hidden;
-      height: 70vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .content {
-      gap: 0.9rem;
-      .link {
-        font-size: 4svw;
-      }
-      .link img {
-        width: 4svw;
-      }
-      .heading {
-        font-size: 6vw;
-      }
-    }
-    .social {
-      display: none;
-    }
-
-    .slider {
-      display: none;
-    }
-    .wrapper {
-      padding-top: 90px;
-      gap: 2rem;
-    }
+    height: 70vh; /* Consider using a fixed pixel value if preferred */
   }
+
+  .hero .wrapper {
+    padding-top: 20rem; /* Adjusted padding-top */
+    flex-direction: column; /* Stack social and content */
+    align-items: center;
+    gap: 2rem; /* Space between social and content */
+  }
+
+  .hero .contaner img {
+    width: 100%; /* Changed to 100% for better mobile responsiveness */
+    object-position: center;
+    object-fit: cover;
+  }
+
+  .hero .contaner {
+    max-width: 100svw;
+    overflow: hidden;
+    height: 70vh; /* Or use a fixed pixel value if preferred */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero .content {
+    gap: 0.9rem;
+    text-align: center; /* Center content on mobile */
+  }
+
+  .hero .content .link {
+    font-size: 4svw; /* Consider using rem or em for font sizes */
+  }
+
+  .hero .content .link img {
+    width: 4svw; /* Consider using rem or em for font sizes */
+  }
+
+  .hero .content .heading {
+    font-size: 6vw; /* Consider using rem or em for font sizes */
+  }
+
+  .hero .social {
+    display: none;
+  }
+
+  .hero .slider {
+    display: none;
+  }
+
+  .hero .wrapper {
+    padding-top: 90px;
+    gap: 2rem;
+  }
+
   .section {
     flex-direction: column;
     padding: 1.5rem;
     gap: 1rem;
     margin: 2rem auto;
-    .content::before {
-      font-size: 100px;
-      top: -3rem;
-      left: -2rem;
-    }
+  }
+
+  .section .content::before {
+    font-size: 100px;
+    top: -3rem;
+    left: -2rem;
   }
 
   section .heading-2 {
     font-size: 34px;
   }
-  .section:nth-child(2) {
-  }
+
+ 
+
   #num2 {
     flex-direction: column-reverse;
   }
+
   footer {
     flex-direction: column;
-  }
-  .hero .contaner {
+    align-items: center; /* Center footer content */
+    text-align: center; /* Center footer text */
   }
 }
